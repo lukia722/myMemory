@@ -81,17 +81,12 @@
 		    android:theme="@android:style/Theme.Dialog"
 		    android:label="@string/title_record" />
 		
-		<!-- FlashCard_Question -->
+		<!-- FlashCard -->
 		 <activity
             android:name="nz.cchang.myandroidtuorial.QCardActivity"
             android:label="@string/title_activity_card" >
         </activity>
-        
-    	<!-- FlashCard_Answer -->
-    	 <activity
-            android:name="nz.cchang.myandroidtuorial.ACardActivity"
-            android:label="@string/title_activity_card" >
-        </activity>
+ 
         
     </application>
 

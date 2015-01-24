@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="nz.cchang.myandroidtuorial"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="16" />
+    <!-- 如果應用程式需要寫入外部儲存設備，一定要加入這個授權 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <!-- 如果應用程式需要讀取外部儲存設備，最好加入這個授權 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <!-- 需要攝錄鏡頭設備 -->
+    <uses-feature android:name="android.hardware.camera"/>
+    <!-- 寫入外部儲存設備 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+ 
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="nz.cchang.myandroidtuorial.MainActivity"
+            android:label="@string/title_activity_main" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 關於應用程式的資訊 -->
+        <!-- 因為使用對話框樣式，所以不用設定標題 -->
+        <activity
+            android:name="nz.cchang.myandroidtuorial.AboutActivity"
+            android:label="@string/title_activity_about"
+            android:theme="@android:style/Theme.Dialog" >
+        </activity>
+        
+        <!-- 記事項目元件 -->
+        <activity
+            android:name="nz.cchang.myandroidtuorial.ItemActivity"
+            android:label="@string/title_activity_item" >
+            <intent-filter>
+                <!-- 新增用的名稱 -->
+                <action android:name="nz.cchang.myandroidtuorial.ADD_ITEM" />
+                <!-- 修改用的名稱 -->
+                <action android:name="nz.cchang.myandroidtuorial.EDIT_ITEM" />
+                <!-- 一定要加入，內容固定不變 -->
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+         <!-- 選擇顏色 -->
+        <activity 
+            android:name="nz.cchang.myandroidtuorial.ColorActivity"
+            android:theme="@android:style/Theme.Dialog"
+            android:label="@string/title_activity_color" >           
+              <!-- 加入設定元件啟動用的Action名稱 -->
+        <intent-filter>
+            <action android:name="nz.cchang.myandroidtuorial.CHOOSE_COLOR" />
+            <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+        
+         </activity>
+        <!-- 設定元件 -->
+        <activity 
+            android:name="nz.cchang.myandroidtuorial.PrefActivity" ></activity>
+        
+        <!-- 錄音元件 -->
+		<activity 
+		    android:name="nz.cchang.myandroidtuorial.RecordActivity"
+		    android:theme="@android:style/Theme.Dialog"
+		    android:label="@string/title_record" />
+		
+		<activity
+		    android:name="nz.cchang.myandroidtuorial.PlayActivity"
+		    android:theme="@android:style/Theme.Dialog"
+		    android:label="@string/title_record" />
+		
+		<!-- FlashCard_Question -->
+		 <activity
+            android:name="nz.cchang.myandroidtuorial.QCardActivity"
+            android:label="@string/title_activity_card" >
+        </activity>
+        
+    	<!-- FlashCard_Answer -->
+    	 <activity
+            android:name="nz.cchang.myandroidtuorial.ACardActivity"
+            android:label="@string/title_activity_card" >
+        </activity>
+        
+    </application>
+
+</manifest>

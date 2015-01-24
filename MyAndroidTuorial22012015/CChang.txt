@@ -1,0 +1,26 @@
+[05/12]
+-- 沒有DB功能 但是功能能用
+-- 以這個記事應用程式來說，除了已經寫好的新增記事資料功能之外，通常也需要讓使用者修改記事資料，在主畫面點擊一筆需要修改的記事項目以後，應用程式開啟修改記事元件讓使用這執行修該資料的工作。
+          這個興改記事的元件跟新謅記事的功能是差不多的，所以通常就不會另外設計一個新的Activity元件，讓以設計好的「ItemActivity」同時提供新增與修改的兩種功能。
+          為了讓一個Activity元件可以執行兩種工作，通常會幫這列元件另外取不同的「Action」名稱，開啟「AndroidManifest.xml」把他改為
+            <application ... >
+        ...
+ 
+        <!-- 記事項目元件 -->
+        <activity
+            android:name="net.macdidi.myandroidtutorial.ItemActivity">
+            <intent-filter>
+                <!-- 新增用的名稱 -->
+                <action android:name="net.macdidi.myandroidtutorial.ADD_ITEM"/>
+                <!-- 修改用的名稱 -->
+                <action android:name="net.macdidi.myandroidtutorial.EDIT_ITEM"/>
+                <!-- 一定要加入，內容固定不變 -->
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+ 
+    </application>
+    
+    Ref: http://www.codedata.com.tw/mobile/android-tutorial-the-2nd-class-4-activity/
+       
+-- start at: Android Tutorial第三堂（1）為ListWiew元件建立自訂畫面

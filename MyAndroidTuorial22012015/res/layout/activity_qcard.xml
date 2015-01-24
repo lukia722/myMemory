@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true" >
+
+
+        <TableRow>
+            <Button 
+			    android:id="@+id/answer_button"
+			    android:text="@string/answer_button"
+			    android:onClick="displayAnswer"
+			    android:layout_width="match_parent"
+			    android:textAppearance="?android:attr/textAppearanceMedium" />
+         </TableRow> 
+         
+         <TableRow>  
+            <Button 
+			    android:id="@+id/next_question_button"
+			    android:text="@string/next_button"
+			    android:onClick="displayNextQuestion"
+			    android:layout_width="match_parent"
+			    android:visibility="gone"
+			    android:textAppearance="?android:attr/textAppearanceMedium" />
+        </TableRow>  
+          
+        <TableRow>
+            <Button 
+			    android:id="@+id/finish_button"
+			    android:text="@string/finish_button"
+			    android:onClick="backToMain"
+			    android:layout_width="match_parent"
+			    android:visibility="gone"
+			    android:textAppearance="?android:attr/textAppearanceMedium" />
+        </TableRow>
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/card_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"
+        android:text="Medium Text"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+</RelativeLayout>

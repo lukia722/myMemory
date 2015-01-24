@@ -1,0 +1,184 @@
+<!-- 使用ScrollView為最外層的元件 -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:layout_width="match_parent" 
+    android:layout_height="match_parent" >
+    
+<!-- 刪除xmlns:android:的設定 -->   
+<TableLayout 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="1" >
+    
+    <TableRow>
+        <TextView 
+            android:text="@string/it_date"
+            android:background="@drawable/retangle_drawable"
+            android:padding="6sp"
+            android:layout_margin="2sp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/it_date_text"
+            android:layout_margin="2sp"
+            android:hint="@string/enter_it_date"
+            android:onClick="selectDate"
+            android:padding="6sp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    </TableRow>
+   <TableRow>     
+        <TextView 
+            android:text="@string/time"
+            android:background="@drawable/retangle_drawable"
+            android:padding="6sp"
+            android:layout_margin="2sp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Spinner
+            android:id="@+id/time_spinner"
+            android:layout_margin="2sp"
+            android:entries="@array/times"
+            android:hint="@string/enter_time"
+            android:padding="6sp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </TableRow>
+
+    <TableRow>
+        <TextView 
+            android:text="@string/title"
+            android:background="@drawable/retangle_drawable"
+            android:padding="6sp"
+            android:layout_margin="2sp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+        <EditText 
+            android:id="@+id/title_text"
+            android:hint="@string/enter_title"
+            android:padding="6sp"
+            android:layout_margin="2sp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </TableRow>    
+    <TableRow>
+        <TextView 
+            android:text="@string/location"
+            android:background="@drawable/retangle_drawable"
+            android:padding="6sp"
+            android:layout_margin="2sp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+        <EditText 
+            android:id="@+id/location_text"
+            android:hint="@string/enter_location"
+            android:padding="6sp"
+            android:layout_margin="2sp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </TableRow>
+    <TableRow>
+        <TextView 
+            android:text="@string/people"
+            android:background="@drawable/retangle_drawable"
+            android:padding="6sp"
+            android:layout_margin="2sp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+        <EditText 
+            android:id="@+id/people_text"
+            android:hint="@string/enter_people"
+            android:padding="6sp"
+            android:layout_margin="2sp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </TableRow>       
+   <TableRow>
+        <TextView 
+            android:text="@string/activity"
+            android:background="@drawable/retangle_drawable"
+            android:padding="6sp"
+            android:layout_margin="2sp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />       
+        <Spinner
+            android:id="@+id/activity_spinner"
+            android:layout_margin="2sp"
+            android:entries="@array/activities"
+            android:hint="@string/enter_activity"
+            android:padding="6sp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </TableRow>  
+    <TableRow>
+        <TextView
+            android:text="@string/content"
+            android:layout_height="200sp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/retangle_drawable"
+            android:padding="6sp"
+            android:layout_margin="2sp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+        <EditText 
+            android:id="@+id/content_text"
+            android:hint="@string/enter_content"
+            android:layout_gravity="top"
+            android:layout_height="200sp"
+            android:padding="6sp"
+            android:layout_margin="2sp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:scrollbars="vertical"
+            android:gravity="top|left" />
+    </TableRow>
+    
+    <!-- 顯示圖片 -->
+    <ImageView 
+        android:id="@+id/picture"
+        android:layout_width="wrap_content"
+        android:background="@drawable/retangle_drawable"
+        android:padding="6sp"
+        android:layout_margin="2sp"
+        android:visibility="invisible" />
+    
+    <TableLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*" >
+        <TableRow>
+            <ImageButton 
+                android:id="@+id/take_picture"
+                android:src="@drawable/ic_action_camera"
+                android:onClick="clickFunction" />
+            <ImageButton 
+                android:id="@+id/record_sound"
+                android:src="@drawable/ic_action_mic"
+                android:onClick="clickFunction"   />          
+             <ImageButton 
+                android:id="@+id/set_location"
+                android:src="@drawable/ic_action_location_searching"
+                android:onClick="clickFunction"   />
+             <ImageButton 
+                android:id="@+id/set_alarm"
+                android:src="@drawable/ic_action_alarms"
+                android:onClick="clickFunction"   />
+             <ImageButton 
+                android:id="@+id/select_color"
+                android:src="@drawable/ic_action_overflow"
+                android:onClick="clickFunction"   />
+        </TableRow>        
+    </TableLayout>
+    
+    <TableLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*" >
+        <TableRow>
+            <Button 
+                android:id="@+id/cancel_item"
+                android:text="@android:string/cancel"
+                android:onClick="onSubmit"
+                android:padding="6sp"
+                android:layout_margin="2sp"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+            <Button 
+                android:id="@+id/ok_item"
+                android:text="@android:string/ok"
+                android:onClick="onSubmit"
+                android:padding="6sp"
+                android:layout_margin="2sp"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </TableRow>      
+    </TableLayout>
+
+</TableLayout>
+</ScrollView>

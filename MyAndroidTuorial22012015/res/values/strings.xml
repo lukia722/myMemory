@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">myMemory</string>
+    <string name="title_activity_main">myMemory</string>
+    <string name="title_activity_color">設定顏色</string>
+    <string name="it_date">Date</string>
+    <string name="enter_it_date">Enter date</string>
+    <string name="time">Time</string>
+    <string name="enter_time">Enter time</string>
+    <string name="title">Title</string>
+    <string name="enter_title">Enter title</string>
+    <string name="location">Location</string>
+    <string name="enter_location">Enter location</string>
+    <string name="people">People</string>
+    <string name="enter_people">Enter name</string>
+    <string name="activity">Activity</string>
+    <string name="enter_activity">Enter activity</string>
+    <string name="content">Content</string>
+    <string name="enter_content">Enter contnet</string>    
+    <string name="about">這是Android Tutorial應用程式</string>
+    <string name="version">版本：AndroidTutorial_0.2.4</string>
+    <string name="title_activity_about">About myMemory</string>
+    <string name="delete">刪除</string>
+    <string name="delete_item">確定要刪除  %1$d 個項目？</string>
+    <string name="default_color">預設的顏色</string>
+    <string name="default_color_summary">新增加記事的預設顏色</string>
+    <string name="default_notify">預設提醒時間</string>
+    <string name="default_notify_summary">在指定時間之前通知</string>
+
+    <string-array name="notify_minutes_array">
+        <item>五分鐘</item>
+        <item>十分鐘</item>
+        <item>二十分鐘</item>
+        <item>三十分鐘</item>
+        <item>六十分鐘</item>
+    </string-array>
+    <string-array name="notify_minutes_value_array">
+        <item>5</item>
+        <item>10</item>
+        <item>20</item>
+        <item>30</item>
+        <item>60</item>
+    </string-array>
+
+    <string name="title_record">語音備忘錄</string>
+    <string name="record_play">播放</string>
+    <string name="record_new">重新錄製</string>
+    <string name="title_activity_item">Memory Information</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_card">FlashCard</string>
+    <string name="answer_button">Answer</string>
+    <string name="back_button">Back</string>
+    <string name="next_button">Next</string>
+    <string name="finish_button">Finish</string>
+    
+    <string-array name="times">
+        <item />
+        <item >Morning</item>
+        <item >Afternoon</item>
+        <item >Evening</item>
+        
+    </string-array>
+    <string-array name="activities">
+        <item ></item>
+        <item >talking</item>
+        <item >eating</item>
+        <item >working</item>
+        <item >studying</item>
+        <item >watching</item>
+        <item >reading</item>
+        <item >shopping</item>
+        <item >holiday</item>
+    </string-array>
+
+</resources>

@@ -38,7 +38,6 @@
             android:id="@+id/time_spinner"
             android:layout_margin="2sp"
             android:entries="@array/times"
-            android:hint="@string/enter_time"
             android:padding="6sp"
             android:textAppearance="?android:attr/textAppearanceMedium" />
     </TableRow>
@@ -144,16 +143,16 @@
                 android:src="@drawable/ic_action_mic"
                 android:onClick="clickFunction"   />          
              <ImageButton 
-                android:id="@+id/set_location"
-                android:src="@drawable/ic_action_location_searching"
+                android:id="@+id/set_sms"
+                android:src="@drawable/ic_action_chat"
                 android:onClick="clickFunction"   />
              <ImageButton 
-                android:id="@+id/set_alarm"
-                android:src="@drawable/ic_action_alarms"
+                android:id="@+id/set_email"
+                android:src="@drawable/ic_action_email"
                 android:onClick="clickFunction"   />
              <ImageButton 
                 android:id="@+id/select_color"
-                android:src="@drawable/ic_action_overflow"
+                android:src="@drawable/ic_action_labels"
                 android:onClick="clickFunction"   />
         </TableRow>        
     </TableLayout>

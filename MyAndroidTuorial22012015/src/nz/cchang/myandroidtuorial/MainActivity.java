@@ -291,7 +291,7 @@ public class MainActivity extends Activity {
 			
 			break;
 
-		case R.id.screensaver:
+		case R.id.scrollingtext:
 			break;
 			
 		case R.id.postit:
@@ -314,7 +314,6 @@ public class MainActivity extends Activity {
 			}
 
 		}
-
 
 		add_item.setVisible(selectedCount == 0);
 		search_item.setVisible(selectedCount == 0);

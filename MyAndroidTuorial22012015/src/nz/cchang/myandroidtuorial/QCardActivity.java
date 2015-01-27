@@ -49,7 +49,7 @@ public class QCardActivity extends Activity {
 		    		currentIndex = 0;
 		    		
 		    		Item item = itemList.get(currentIndex); 
-		    		card_content.setText("Where did you meet " + item.getPeople() + "?");
+		    		card_content.setText("Question: \nWhere did you meet " + item.getPeople() + "?");
 		    		
 		    		totalQuestionCount = itemList.size() * 2;
 		    		currentQuestion++;
@@ -65,10 +65,10 @@ public class QCardActivity extends Activity {
 		Item item = itemList.get(currentIndex);
 		
 		if (firstQuestion) {
-			card_content.setText(item.getLocation());
+			card_content.setText("Answer: \nI met " + item.getPeople() +" at " + item.getLocation());
 			firstQuestion = false;
 		} else {
-			card_content.setText(item.getActivity());
+			card_content.setText("Answer: \nI were " + item.getActivity() + " with " + item.getPeople());
 			firstQuestion = true;
 			currentIndex++;
 		}
@@ -90,9 +90,9 @@ public class QCardActivity extends Activity {
 		Item item = itemList.get(currentIndex); 
 		
 		if (firstQuestion) {
-			card_content.setText("Where did you meet " + item.getPeople() + "?");
+			card_content.setText("Question: \nWhere did you meet " + item.getPeople() + "?");
 		} else {
-			card_content.setText("what did you do at " + item.getLocation() + "?");
+			card_content.setText("Question: \n What did you do with " + item.getPeople() + " at " + item.getLocation() + "?");
 		}
 		
 		header.setText("Question " + currentQuestion++ + " out of " + totalQuestionCount);

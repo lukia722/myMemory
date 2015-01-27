@@ -38,8 +38,8 @@
                 android:onClick="clickMenuItem" />
             
             <item
-                android:id="@+id/screensaver"
-                android:title="ScreenSaver"
+                android:id="@+id/scrollingtext"
+                android:title="ScrollingText"
                 android:onClick="clickMenuItem" />
             
                

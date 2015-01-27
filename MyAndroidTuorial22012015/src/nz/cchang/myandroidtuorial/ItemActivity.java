@@ -22,6 +22,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ItemActivity extends Activity {
 
@@ -29,23 +30,25 @@ public class ItemActivity extends Activity {
 	private EditText it_date_text, location_text, people_text;
 	private Spinner time_spinner, activity_spinner;
 	private ArrayAdapter<String> adapTime, adapActivity;
+
 	
-	
+	// The code for onActivityResult()
 	private static final int START_CAMERA = 0;
 	private static final int START_RECORD = 1;
 	private static final int START_LOCATION = 2;
 	private static final int START_ALARM = 3;
 	private static final int START_COLOR = 4;
 
-
+	// Item object
 	private Item item;
 	
-
+	// fileName for Item object
 	private String fileName;	
 	
-
+	// Picture
 	private ImageView picture;
 	
+	// String for saving value for Spinner and DatePicker
 	private String strDate, strTime, strActivity;
 
 	@Override
@@ -54,14 +57,15 @@ public class ItemActivity extends Activity {
 		setContentView(R.layout.activity_item);
 
 		processViews();
-
+		
+		// Get Intent object
 		Intent intent = getIntent();
-
+		// Setting the action
 		String action = intent.getAction();
 
-
+		// If the action is EDIT item when the item existed already 
 		if (action.equals("nz.cchang.myandroidtuorial.EDIT_ITEM")) {
-
+			// Receiving the selected item for the content
 			item = (Item) intent.getExtras().getSerializable(
 					"nz.cchang.myandroidtuorial.Item");
 
@@ -71,6 +75,11 @@ public class ItemActivity extends Activity {
 			location_text.setText(item.getLocation());
 			people_text.setText(item.getPeople());
 			
+//			if (item.getIt_date() != null){
+//				datePicDlgOnDateSelLis.equals(item.getIt_date());
+//			}
+			
+			// Getting value back from the DB 
 			if (item.getTime() != null) {
 				int timeSpinnerPostion = adapTime.getPosition(item.getTime());
 				time_spinner.setSelection(timeSpinnerPostion);
@@ -83,6 +92,8 @@ public class ItemActivity extends Activity {
 		        activitySpinnerPostion = 0;				
 			}
 		}
+		
+		// ADD new item
 		else {
 			item = new Item();
 			
@@ -92,6 +103,7 @@ public class ItemActivity extends Activity {
 		}
 	}
 	
+	// Using the DatePicker for setting the date
 	public void selectDate(View view) {
 		Calendar eDate = Calendar.getInstance();
 		DatePickerDialog datePickerDialog = new DatePickerDialog (ItemActivity.this, datePicDlgOnDateSelLis, 
@@ -120,16 +132,18 @@ public class ItemActivity extends Activity {
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-
+		
+		// If the fileName is exist
 		if (item.getFileName() != null && item.getFileName().length() > 0) {
-
+			// Getting the picture
 			File file = configFileName("p", ".jpg");
 			
-
+			// If the picture is exists
 			if (file.exists()) {
-
+				
+				// Presenting the picture
 				picture.setVisibility(View.VISIBLE);
-
+				// Setting the picture
 				FileUtil.fileToImageView(file.getAbsolutePath(), picture);
 			}
 		}
@@ -140,20 +154,23 @@ public class ItemActivity extends Activity {
 		// TODO Auto-generated method stub
 		if (resultCode == Activity.RESULT_OK) {
 			switch (requestCode) {
-
+			// Taking the picture
 			case START_CAMERA:
 				item.setFileName(fileName);
 				break;
-
+				
+			//  Setting the recored fileName
 			case START_RECORD:
-
 				item.setFileName(fileName);
 				break;
+				
 			case START_LOCATION:
 				break;
+				
 			case START_ALARM:
 				break;
-
+			
+			// Setting the color
 			case START_COLOR:
 				int colorId = data.getIntExtra("colorId", Colors.LIGHTGREY.parseColor());
 				item.setColor(getColors(colorId));
@@ -197,6 +214,7 @@ public class ItemActivity extends Activity {
 		activity_spinner = (Spinner)findViewById(R.id.activity_spinner);
 		adapActivity = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,getResources().getStringArray(R.array.activities));
 		adapActivity.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		activity_spinner.setOnItemSelectedListener(activity_spinnerItemSelLis);		
 	}	
 
 	
@@ -208,7 +226,6 @@ public class ItemActivity extends Activity {
 						int position, long id) {
 					// TODO Auto-generated method stub
 					strTime = parent.getSelectedItem().toString();
-	//					time_text.setText(strTime);
 				}
 	
 				@Override
@@ -238,14 +255,15 @@ public class ItemActivity extends Activity {
 			};
 
 	public void onSubmit(View view) {
-
+		// Clicking OK button
 		if (view.getId() == R.id.ok_item) {
-
+			// Getting the value from inputing 
 			String titleText = title_text.getText().toString();
 			String contentText = content_text.getText().toString();
 			String locationText=location_text.getText().toString();
 			String peopleText = people_text.getText().toString();
-
+			
+			// Passing the value to item
 			item.setTitle(titleText);
 			item.setContent(contentText);
 			item.setIt_date(strDate);
@@ -253,20 +271,23 @@ public class ItemActivity extends Activity {
 			item.setLocation(locationText);
 			item.setPeople(peopleText);
 			item.setActivity(strActivity);
-
+			
+			// If the action is EDIT item when the item is NEW 
 			if (getIntent().getAction().equals(
 					"nz.cchang.myandroidtuorial.EDIT_ITEM")) {
 				item.setLastModify(new Date().getTime());
+				Toast.makeText(getApplicationContext(), "Memory sucessfully edited.", Toast.LENGTH_SHORT).show();
 			}
-
+			// ADD item
 			else {
 				item.setDatetime(new Date().getTime());
+				Toast.makeText(getApplicationContext(), "Memory sucessfully saved.", Toast.LENGTH_SHORT).show();
 			}
 
 			Intent result = getIntent();
-
+			// Setting the return item object
 			result.putExtra("nz.cchang.myandroidtuorial.Item", item);
-			setResult(Activity.RESULT_OK, result);
+			setResult(Activity.RESULT_OK, result);		
 		}
 
 		finish();
@@ -278,20 +299,15 @@ public class ItemActivity extends Activity {
 
 		switch (id) {
 		case R.id.take_picture:
-
+			// Starting the Camera intent
 			Intent intentCamera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 			
-			
-
+			// Getting the fileName for Camera
 			File pictureFile = configFileName("p", ".jpg");
 			Uri uri = Uri.fromFile(pictureFile);
 			
-			
-
 			intentCamera.putExtra(MediaStore.EXTRA_OUTPUT, uri);
 			
-			
-
 			startActivityForResult(intentCamera, START_CAMERA);
 			break;
 
@@ -310,7 +326,7 @@ public class ItemActivity extends Activity {
 //					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						// TODO Auto-generated method stub
-						// ¼½©ñ
+						// Playing
 						Intent playIntent = new Intent(ItemActivity.this, PlayActivity.class);
 						playIntent.putExtra("fileName", recordFile.getAbsolutePath());
 						startActivity(playIntent);
@@ -333,10 +349,28 @@ public class ItemActivity extends Activity {
 			}
 			break;
 
-		case R.id.set_location:
+		case R.id.set_sms:
+			String smsContent1 = "[myMemory]" + item.getIt_date();
+			String smsContent2 = item.getTitle() + " : " + item.getContent();
+			String smsContent3 = item.getActivity() + " with " + item.getPeople() + " at " + item.getLocation();
+			Intent intentSms = new Intent(Intent.ACTION_VIEW);
+			intentSms.setData(Uri.parse("smsto:"));
+			intentSms.setType("vnd.android-dir/mms-sms");
+			intentSms.putExtra("sms_body", smsContent1 + " \n" + smsContent2 + "\n" + smsContent3);
+			
+			startActivity(intentSms);
 			break;
 
-		case R.id.set_alarm:
+		case R.id.set_email:
+			String mailContent1 = item.getIt_date();
+			String mailContent2 = "It was " + item.getTitle() + " and " + item.getContent() + ".";
+			String mailContent3 = "I was " + item.getActivity() + " with " + item.getPeople() + " at " + item.getLocation() + ".";
+			Intent intentEmail = new Intent(Intent.ACTION_SENDTO);
+			intentEmail.setData(Uri.parse("mailto:"));
+			intentEmail.putExtra(Intent.EXTRA_SUBJECT, "[MyMemory]"+ item.getIt_date());
+			intentEmail.putExtra(Intent.EXTRA_TEXT, mailContent1 + "\n" +mailContent2 + "\n" +mailContent3 );
+			
+			startActivity(intentEmail);
 			break;
 
 		case R.id.select_color:
